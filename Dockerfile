@@ -1,23 +1,21 @@
 FROM php:8.2-apache
 
-# Aktifkan Apache Rewrite
+# Aktifkan Rewrite
 RUN a2enmod rewrite
 
-# Install ekstensi PHP
+# Install PHP extension
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# FIX MPM KONFLIK (lakukan SETELAH install PHP extension)
-RUN a2dismod mpm_event || true
-RUN a2dismod mpm_worker || true
-RUN a2enmod mpm_prefork
+# HARD FIX: Paksa Apache hanya memakai PREFORK
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    /etc/apache2/mods-enabled/mpm_*.conf && \
+    ln -s /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load && \
+    ln -s /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
 
 # Izinkan .htaccess
 RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
-# Copy semua file
 COPY . /var/www/html/
-
-# Izin folder
 RUN chown -R www-data:www-data /var/www/html
 
 EXPOSE 80
