@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  display: flex;
+}
+
+/*==============================
+  SIDEBAR CLOUDIFY
+==============================*/
+.sidebar {
+  width: 260px;
+  background: #ffffff;
+  height: 100vh;
+  padding: 25px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.logo img {
+  width: 80px;
+}
+
+.btn-new {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: #444;
+  transition: 0.2s;
+}
+
+.menu li:hover,
+.menu li.active {
+  background: #e7f0ff;
+  color: #4285f4;
+}
+
+.menu i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Hilangkan underline pada menu sidebar */
+.sidebar .menu a {
+    text-decoration: none !important;
+}
+
+.sidebar .menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    color: #333;
+}
+
+.sidebar .menu li a:hover {
+    text-decoration: none !important;
+}
+
+
+/* STORAGE BOX */
+.storage {
+  margin-top: 30px;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 20px;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 35%;
+  height: 100%;
+  background: #4285f4;
+  border-radius: 20px;
+  position: absolute;
+}
+
+.storage p {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #555;
+  text-align: left;
+}
+
+/*==============================
+  MAIN CONTENT
+==============================*/
+.main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 20px;
+}
+
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 260px; /* mengikuti sidebar */
+  width: calc(100% - 260px);
+  height: 90px; /* tinggi header dibuat fix */
+  background: #f3f4f8;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  border-bottom: 1px solid #e3e6ee;
+}
+
+/* SEARCH BOX */
+.search-box {
+  width: 65%;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 50px 14px 45px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background: #dcdcdc;
+  font-size: 15px;
+  color: #444;
+}
+
+/* icon search */
+.search-box i.fa-search {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 18px;
+  color: #444;
+}
+
+/* icon filter */
+.search-box i.fa-sliders-h {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 18px;
+  color: #444;
+}
+
+/* HEADER RIGHT ICONS */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* default icon bubble */
+.header-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #eef1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* USER gradient */
+.header-icon.user {
+  background: linear-gradient(135deg, #91b3ff, #b8c5ff, #d1d8ff);
+}
+
+/* agar konten tidak menabrak header */
+.content-wrapper {
+  padding-top: 110px !important;
+}
